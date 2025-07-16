@@ -68,31 +68,34 @@ systemctl restart httpd2.service
 Пароль по-умолчанию: ```admin```
 
 Выбираем язык --> Настраиваем доступ к базе данных
-
+```
 Database type: PostgreSQL
 Database name: bacula
 Login: bacula
 Password: пароль от базы(по умолчанию пустой)
 IP address (or hostname): localhost
 Port:5432
+```
 
-##Внимание! Необходимо поставить галочку Use sudo где это возможно.
+###Внимание! Необходимо поставить галочку Use sudo где это возможно.
 
+##Настраиваем интерфейс для выполнения команд в bconsole:
 
-Настраиваем интерфейс для выполнения команд в bconsole:
-
+```
 Bconsole binary file path: /usr/bin/bconsole
 Bconsole admin config file path:/etc/bacula/bconsole.conf
+```
 
-
-Настраиваем Config API
+#Настраиваем Config API
 
 General configuration
 
 Directory path for new config files: /etc/bacula/new - перед применением настроек нужно создать эту директорию и установить права пользователю и группе apache2.
 
-# mkdir /etc/bacula/new
-# chown apache2:apache2 /etc/bacula/new
+```
+mkdir /etc/bacula/new
+chown apache2:apache2 /etc/bacula/new
+```
 
 Director
 
