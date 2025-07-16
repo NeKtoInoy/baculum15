@@ -3,51 +3,58 @@ baculum15 settings on altlinux
 
 # Установка Baculum
 
-Baculum- web интерфейс Bacula. Установим необходимые пакеты на сервере:
+1. Baculum- web интерфейс Bacula. Установим необходимые пакеты на сервере:
 
 ```
 apt-get install baculum9-postgresql
-
 apt-get install baculum9-apache2
 ```
-Далее включим сайты baculum-api.conf и baculum-web.conf в apache2:
 
-# a2ensite baculum-api
-# a2ensite baculum-web
+2. Далее включим сайты baculum-api.conf и baculum-web.conf в apache2:
 
+```
+a2ensite baculum-api
+a2ensite baculum-web
+```
 
-Включаем следующие модули для работы baculum web c помощью команд:
+3. Включаем следующие модули для работы baculum web c помощью команд:
 
-# a2enmod auth_basic
-# a2enmod authn_core
-# a2enmod authn_file
-# a2enmod authz_core
-# a2enmod authz_host
-# a2enmod authz_user
-# a2enmod mod_php7
-# a2enmod negotiation
-# a2enmod rewrite
-# a2enmod setenvif
+```
+a2enmod auth_basic
+a2enmod authn_core
+a2enmod authn_file
+a2enmod authz_core
+a2enmod authz_host
+a2enmod authz_user
+a2enmod mod_php7
+a2enmod negotiation
+a2enmod rewrite
+a2enmod setenvif
+```
 
-Добавляем пользователя apache2 в группу bacula:
+4. Добавляем пользователя apache2 в группу bacula:
 
-# usermod -a -G bacula apache2
+```
+usermod -a -G bacula apache2
+```
 
+5. Запустим сервис httpd2:
 
-Запустим сервис httpd2:
+```
+systemctl start httpd2
+```
 
-# systemctl start httpd2
+6. Для работы с bconsole веб серверу даём право запускать необходимые бинарники без пароля:
 
-Для работы с bconsole веб серверу даём право запускать необходимые бинарники без пароля:
-
-# control sudo public
-# echo "Defaults:apache2 "'!'"requiretty
+```
+control sudo public
+echo "Defaults:apache2 "'!'"requiretty
 > apache2 ALL=NOPASSWD: /usr/bin/bconsole
 > apache2 ALL=NOPASSWD: /usr/sbin/bdirjson
 > apache2 ALL=NOPASSWD: /usr/sbin/bsdjson
 > apache2 ALL=NOPASSWD: /usr/sbin/bfdjson
 > apache2 ALL=NOPASSWD: /usr/sbin/bbconsjson" > /etc/sudoers.d/baculum
-
+```
 
 Перезапустим apache:
 
