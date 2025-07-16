@@ -56,14 +56,15 @@ echo "Defaults:apache2 "'!'"requiretty
 > apache2 ALL=NOPASSWD: /usr/sbin/bbconsjson" > /etc/sudoers.d/baculum
 ```
 
-Перезапустим apache:
+7. Перезапустим apache:
 
-# systemctl restart httpd2.service 
+```
+systemctl restart httpd2.service 
+```
 
-Переходим по ссылке http://IPадрес:9096 и попадаем в интерфейс настройки baculum-api:
-
-Логин по-умолчанию: admin
-Пароль по-умолчанию: admin
+8. Переходим по ссылке http://IPадрес:9096 и попадаем в интерфейс настройки baculum-api:
+Логин по-умолчанию: ```admin```
+Пароль по-умолчанию: ```admin```
 
 Выбираем язык --> Настраиваем доступ к базе данных
 
@@ -74,7 +75,7 @@ Password: пароль от базы(по умолчанию пустой)
 IP address (or hostname): localhost
 Port:5432
 
-Внимание! Необходимо поставить галочку Use sudo где это возможно.
+##Внимание! Необходимо поставить галочку Use sudo где это возможно.
 
 
 Настраиваем интерфейс для выполнения команд в bconsole:
