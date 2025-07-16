@@ -5,13 +5,11 @@ baculum15 settings on altlinux
 
 Baculum- web интерфейс Bacula. Установим необходимые пакеты на сервере:
 
-'''
+```
 apt-get install baculum9-postgresql
-'''
-'''
-apt-get install baculum9-apache2
-'''
 
+apt-get install baculum9-apache2
+```
 Далее включим сайты baculum-api.conf и baculum-web.conf в apache2:
 
 # a2ensite baculum-api
